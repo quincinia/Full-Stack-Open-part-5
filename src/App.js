@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import Blog from "./components/Blog"
 import BlogForm from "./components/BlogForm"
 import Togglable from "./components/Togglable"
@@ -22,6 +22,9 @@ const App = () => {
 
     // For reference, user objects have the fields: { token, username, name }
     const [user, setUser] = useState(null)
+
+    // Reference to blog form
+    const blogFormRef = useRef()
 
     // Notifications
     const [notifMessage, setNotifMessage] = useState({
@@ -105,8 +108,11 @@ const App = () => {
             setBlogs(blogs.concat(savedBlog))
 
             displayNotif(`a new blog ${savedBlog.title} by ${savedBlog.author} added`, 'success')
+
+            blogFormRef.current.toggleVisibility()
         } catch (exception) {
             displayNotif('error occurred trying to add new blog', 'error')
+            console.log(exception)
         }
     }
 
@@ -118,7 +124,7 @@ const App = () => {
             <h2>blogs</h2>
             <Notification message={notifMessage} />
             <p>{user.name} logged in<button onClick={handleLogout}>logout</button></p>
-            <Togglable buttonLabel='new blog'>
+            <Togglable buttonLabel='new blog' ref={blogFormRef}>
                 <BlogForm createBlog={addBlog}/>
             </Togglable>
             {blogs.map((blog) => (

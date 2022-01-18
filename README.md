@@ -14,3 +14,6 @@ New blogs have the default value of 0 likes. Otherwise, just followed the story.
 
 ## Exercise 5.4
 Added Notification component from previous parts. Added CSS file for coloring.
+
+## Exercise 5.5
+Followed the story closely, but had a few small issues (syntax errors, Togglable not liking the array).
