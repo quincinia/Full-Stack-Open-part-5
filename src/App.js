@@ -3,6 +3,16 @@ import Blog from "./components/Blog"
 import blogService from "./services/blogs"
 import loginService from "./services/login"
 
+// Same notification scheme from previous parts
+const Notification = (props) => {
+    const { message, type } = props.message
+    if (message === null) {
+        return null
+    }
+
+    return <div className={type}>{message}</div>
+}
+
 const App = () => {
     const [blogs, setBlogs] = useState([])
     const [username, setUsername] = useState('')
@@ -17,6 +27,19 @@ const App = () => {
     const [newUrl, setNewUrl] = useState('')
     // Likes are not currently being tracked, but putting them here for completeness
     const [newLikes, setNewLikes] = useState(0)
+
+    // Notifications
+    const [notifMessage, setNotifMessage] = useState({
+        message: null,
+        type: null
+    })
+
+    const displayNotif = (message, type) => {
+        setNotifMessage({ message, type })
+        setTimeout(() => {
+            setNotifMessage({ message: null, type: null })
+        }, 5000)
+    }
 
     // Grab initial blogs
     useEffect(() => {
@@ -52,7 +75,7 @@ const App = () => {
             setUsername('')
             setPassword('')
         } catch (exception) {
-            // Display notification
+            displayNotif('wrong username or password', 'error')
         }
     }
 
@@ -64,6 +87,7 @@ const App = () => {
     const loginForm = () => (
         <div>
             <h2>log in to application</h2>
+            <Notification message={notifMessage} />
             <form onSubmit={handleLogin}>
                 <div>
                     username
@@ -94,8 +118,10 @@ const App = () => {
             setNewTitle('')
             setNewAuthor('')
             setNewUrl('')
-        } catch (exception) {
 
+            displayNotif(`a new blog ${newBlog.title} by ${newBlog.author} added`, 'success')
+        } catch (exception) {
+            displayNotif('error occurred trying to add new blog', 'error')
         }
     }
 
@@ -126,6 +152,7 @@ const App = () => {
     return (
         <div>
             <h2>blogs</h2>
+            <Notification message={notifMessage} />
             <p>{user.name} logged in<button onClick={handleLogout}>logout</button></p>
             {blogForm()}
             {blogs.map((blog) => (

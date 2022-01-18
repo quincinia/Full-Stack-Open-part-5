@@ -10,4 +10,7 @@ Followed the story closely. User cannot log out unless the app is restarted.
 Simple login/logout, just added localStorage calls.
 
 ## Exercise 5.3
-New blogs have the default value of 0 likes.
+New blogs have the default value of 0 likes. Otherwise, just followed the story.
+
+## Exercise 5.4
+Added Notification component from previous parts. Added CSS file for coloring.
