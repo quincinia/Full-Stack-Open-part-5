@@ -4,9 +4,10 @@ const Togglable = (props) => {
     const [visible, setVisible] = useState(false)
 
     // Not using ternary operator like in the story
+    // Apparently React doesn't like array indexing
     const options = ['none', '']
-    const hideWhenVisible = { display: options[!visible] }
-    const showWhenVisible = { display: options[visible] }
+    const hideWhenVisible = { display: visible ? 'none' : '' }
+    const showWhenVisible = { display: visible ? '' : 'none' }
 
     const toggleVisibility = () => {
         setVisible(!visible)
