@@ -26,3 +26,7 @@ Blogs can now be expanded. Placed a like button, but it isn't working yet. Didn'
 
 ## Exercise 5.8
 Blogs can now be liked (multiple times). Not sure if I used the right method for updating an item in the `blogs` array, but it works.
+
+## Exercise 5.9
+Blogs are now sorted by likes. Maybe a loop could be used instead of the `sort` method when liking only a single post, but using `sort` looks cleaner.  
+Apparently Mongoose can also return a sorted query. (not used in this exercise)

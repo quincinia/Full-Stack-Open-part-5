@@ -41,7 +41,9 @@ const App = () => {
 
     // Grab initial blogs
     useEffect(() => {
-        blogService.getAll().then((blogs) => setBlogs(blogs))
+        blogService.getAll().then((blogs) => {
+            setBlogs(blogs.sort((a, b) => b.likes - a.likes))
+        })
     }, [])
 
     // Look for logged in users
@@ -123,7 +125,7 @@ const App = () => {
 
             const newBlogs = [...blogs]
             newBlogs[index].likes = savedBlog.likes
-            setBlogs(newBlogs)
+            setBlogs(newBlogs.sort((a, b) => b.likes - a.likes))
         } catch (exception) {
             displayNotif('error occurred trying to like that blog', 'error')
             console.log(exception)
