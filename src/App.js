@@ -132,6 +132,10 @@ const App = () => {
         }
     }
 
+    const deleteBlog = (blogIndex) => {
+        setBlogs(blogs.filter((item, index) => index !== blogIndex))
+    }
+
     if (user === null) {
         return loginForm()
     }
@@ -149,6 +153,7 @@ const App = () => {
                       index={index}
                       likeBlog={likeBlog}
                       username={user.username}
+                      deleteBlog={deleteBlog}
                 />
             ))}
         </div>

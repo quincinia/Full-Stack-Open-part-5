@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-const Blog = ({ blog, index, likeBlog, username }) => {
+const Blog = ({ blog, index, likeBlog, username, deleteBlog }) => {
     const [visible, setVisible] = useState(false)
     const blogStyle = {
         paddingTop: 10,
@@ -35,7 +35,7 @@ const Blog = ({ blog, index, likeBlog, username }) => {
                 {blog.author}<br />
                 {
                     blog.user.username === username ?
-                        <button>remove</button> :
+                        <button onClick={() => deleteBlog(index)}>remove</button> :
                         null
                 }
             </div>

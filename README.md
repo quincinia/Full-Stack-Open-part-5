@@ -30,3 +30,6 @@ Blogs can now be liked (multiple times). Not sure if I used the right method for
 ## Exercise 5.9
 Blogs are now sorted by likes. Maybe a loop could be used instead of the `sort` method when liking only a single post, but using `sort` looks cleaner.  
 Apparently Mongoose can also return a sorted query. (not used in this exercise)
+
+## Exercise 5.10
+Note that blogs are only deleted on the frontend. Using `filter` to delete items rather than `splice`.
