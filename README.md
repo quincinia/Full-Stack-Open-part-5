@@ -23,3 +23,6 @@ BlogForm was extracted into its own component during 5.5.
 
 ## Exercise 5.7
 Blogs can now be expanded. Placed a like button, but it isn't working yet. Didn't wrap the blog title and author in a `<div>` like in the example.
+
+## Exercise 5.8
+Blogs can now be liked (multiple times). Not sure if I used the right method for updating an item in the `blogs` array, but it works.
