@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-const Blog = ({ blog, index, likeBlog }) => {
+const Blog = ({ blog, index, likeBlog, username }) => {
     const [visible, setVisible] = useState(false)
     const blogStyle = {
         paddingTop: 10,
@@ -32,7 +32,12 @@ const Blog = ({ blog, index, likeBlog }) => {
             <div style={ { display: visible ? '' : 'none' } }>
                 {blog.url}<br />
                 likes {blog.likes}<button onClick={addLike}>like</button><br />
-                {blog.author}
+                {blog.author}<br />
+                {
+                    blog.user.username === username ?
+                        <button>remove</button> :
+                        null
+                }
             </div>
         </div>
     )

@@ -148,6 +148,7 @@ const App = () => {
                       blog={blog} 
                       index={index}
                       likeBlog={likeBlog}
+                      username={user.username}
                 />
             ))}
         </div>
