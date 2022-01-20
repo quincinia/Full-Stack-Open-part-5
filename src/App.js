@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react"
-import Blog from "./components/Blog"
-import BlogForm from "./components/BlogForm"
-import Togglable from "./components/Togglable"
-import blogService from "./services/blogs"
-import loginService from "./services/login"
+import React, { useState, useEffect, useRef } from 'react'
+import Blog from './components/Blog'
+import BlogForm from './components/BlogForm'
+import Togglable from './components/Togglable'
+import blogService from './services/blogs'
+import loginService from './services/login'
 
 // Same notification scheme from previous parts
 const Notification = (props) => {
@@ -54,7 +54,7 @@ const App = () => {
             setUser(user)
         }
     }, [])
-    
+
     const handleLogin = async (event) => {
         event.preventDefault()
 
@@ -148,12 +148,12 @@ const App = () => {
                 <BlogForm createBlog={addBlog}/>
             </Togglable>
             {blogs.map((blog, index) => (
-                <Blog key={blog.id} 
-                      blog={blog} 
-                      index={index}
-                      likeBlog={likeBlog}
-                      username={user.username}
-                      deleteBlog={deleteBlog}
+                <Blog key={blog.id}
+                    blog={blog}
+                    index={index}
+                    likeBlog={likeBlog}
+                    username={user.username}
+                    deleteBlog={deleteBlog}
                 />
             ))}
         </div>

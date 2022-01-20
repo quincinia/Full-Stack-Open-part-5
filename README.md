@@ -37,3 +37,5 @@ Note that blogs are only deleted on the frontend. Using `filter` to delete items
 ## Exercise 5.11
 Not sure how to format proptypes for objects.
 
+## Exercise 5.12
+Not much to fix with eslint, mainly line ending errors.
