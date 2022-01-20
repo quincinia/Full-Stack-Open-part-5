@@ -116,6 +116,20 @@ const App = () => {
         }
     }
 
+    const likeBlog = async (blog, index, blogId) => {
+        try {
+            // Not sure if you should delete the id beforehand?
+            const savedBlog = await blogService.update(blog, blogId)
+
+            const newBlogs = [...blogs]
+            newBlogs[index].likes = savedBlog.likes
+            setBlogs(newBlogs)
+        } catch (exception) {
+            displayNotif('error occurred trying to like that blog', 'error')
+            console.log(exception)
+        }
+    }
+
     if (user === null) {
         return loginForm()
     }
@@ -127,8 +141,12 @@ const App = () => {
             <Togglable buttonLabel='new blog' ref={blogFormRef}>
                 <BlogForm createBlog={addBlog}/>
             </Togglable>
-            {blogs.map((blog) => (
-                <Blog key={blog.id} blog={blog} />
+            {blogs.map((blog, index) => (
+                <Blog key={blog.id} 
+                      blog={blog} 
+                      index={index}
+                      likeBlog={likeBlog}
+                />
             ))}
         </div>
     )
