@@ -1,11 +1,12 @@
 import React, { useState, useImperativeHandle } from 'react'
+import PropTypes from 'prop-types'
 
 const Togglable = React.forwardRef((props, ref) => {
     const [visible, setVisible] = useState(false)
 
     // Not using ternary operator like in the story
     // Apparently React doesn't like array indexing
-    const options = ['none', '']
+    // const options = ['none', '']
     const hideWhenVisible = { display: visible ? 'none' : '' }
     const showWhenVisible = { display: visible ? '' : 'none' }
 
@@ -17,7 +18,7 @@ const Togglable = React.forwardRef((props, ref) => {
         return {
             toggleVisibility
         }
-    })    
+    })
 
     return (
         <div>
@@ -31,5 +32,11 @@ const Togglable = React.forwardRef((props, ref) => {
         </div>
     )
 })
+
+Togglable.propTypes = {
+    buttonLabel: PropTypes.string.isRequired
+}
+
+Togglable.displayName = 'Togglable'
 
 export default Togglable

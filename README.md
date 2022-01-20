@@ -33,3 +33,7 @@ Apparently Mongoose can also return a sorted query. (not used in this exercise)
 
 ## Exercise 5.10
 Note that blogs are only deleted on the frontend. Using `filter` to delete items rather than `splice`.
+
+## Exercise 5.11
+Not sure how to format proptypes for objects.
+
