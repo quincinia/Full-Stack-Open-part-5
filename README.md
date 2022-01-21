@@ -48,3 +48,6 @@ Testing both that the details are shown AND has the correct text content because
 
 ## Exercise 5.15
 You don't need to click the `show` button in order to be able to click the `like` button.
+
+## Exercise 5.16
+Added test for the BlogForm component. Didn't need to modify the BlogForm component since we had already added `name` attributes before. Again, these tests were pretty straightforward.
