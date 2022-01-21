@@ -39,3 +39,6 @@ Not sure how to format proptypes for objects.
 
 ## Exercise 5.12
 Not much to fix with eslint, mainly line ending errors.
+
+## Exercise 5.13
+Test files will be in their own directory, not with their components. The test here is relatively straightforward.
