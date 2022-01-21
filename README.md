@@ -42,3 +42,6 @@ Not much to fix with eslint, mainly line ending errors.
 
 ## Exercise 5.13
 Test files will be in their own directory, not with their components. The test here is relatively straightforward.
+
+## Exercise 5.14
+Testing both that the details are shown AND has the correct text content because the text content will exist even when it is hidden. Straightforward tests here as well.
