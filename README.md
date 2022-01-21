@@ -45,3 +45,6 @@ Test files will be in their own directory, not with their components. The test h
 
 ## Exercise 5.14
 Testing both that the details are shown AND has the correct text content because the text content will exist even when it is hidden. Straightforward tests here as well.
+
+## Exercise 5.15
+You don't need to click the `show` button in order to be able to click the `like` button.
