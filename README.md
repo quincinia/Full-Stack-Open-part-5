@@ -51,3 +51,8 @@ You don't need to click the `show` button in order to be able to click the `like
 
 ## Exercise 5.16
 Added test for the BlogForm component. Didn't need to modify the BlogForm component since we had already added `name` attributes before. Again, these tests were pretty straightforward.
+
+## Exercise 5.17
+Updated the part 4 npm scripts to run in test mode. Not sure why the story has a `json-server` script, won't be using that for this part. Added a script to run the backend from this directory. 
+
+Also added an API for clearing the DB on the backend. Test for confirming the login page passes.
