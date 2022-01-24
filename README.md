@@ -61,3 +61,10 @@ Also added an API for clearing the DB on the backend. Test for confirming the lo
 Added a script to call Cypress from the command line. Completely forgot that you can bypass the UI for logging in. Won't change the previous tests for consistency, but will try to avoid the UI from now on.
 
 Otherwise, followed the tests as shown in the story. I also checked for the red color on the error message.
+
+## Exercise 5.19
+Made a command for logging in and for adding a blog. Basically copied that from the story.  
+Blogs added through manual POST requests will not show a success message. Although a command has been implemented for adding a blog, this test will be making the blogs through the form in order to test that the form works.
+Forgot that there were two elements with the word 'create' in them, so I couldn't use `contains('create')` to select the button.
+
+Logging in through a POST request DOES NOT grab the token from the user object. This functionality has been added.
