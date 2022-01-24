@@ -56,3 +56,8 @@ Added test for the BlogForm component. Didn't need to modify the BlogForm compon
 Updated the part 4 npm scripts to run in test mode. Not sure why the story has a `json-server` script, won't be using that for this part. Added a script to run the backend from this directory. 
 
 Also added an API for clearing the DB on the backend. Test for confirming the login page passes.
+
+## Exercise 5.18
+Added a script to call Cypress from the command line. Completely forgot that you can bypass the UI for logging in. Won't change the previous tests for consistency, but will try to avoid the UI from now on.
+
+Otherwise, followed the tests as shown in the story. I also checked for the red color on the error message.
