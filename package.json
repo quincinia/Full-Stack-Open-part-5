@@ -18,7 +18,8 @@
         "server": "cd ../Full-Stack-Open-part-4 && npm run start",
         "server:test": "cd ../Full-Stack-Open-part-4 && npm run start:test",
         "eslint": "eslint .",
-        "cypress:open": "cypress open"
+        "cypress:open": "cypress open",
+        "cypress:cli": "cypress run"
     },
     "eslintConfig": {
         "extends": [
@@ -43,6 +44,7 @@
         "@testing-library/jest-dom": "^5.16.1",
         "@testing-library/react": "^12.1.2",
         "cypress": "^9.3.1",
+        "eslint-plugin-cypress": "^2.12.1",
         "eslint-plugin-jest": "^24.7.0"
     }
 }
