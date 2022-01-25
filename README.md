@@ -68,3 +68,6 @@ Blogs added through manual POST requests will not show a success message. Althou
 Forgot that there were two elements with the word 'create' in them, so I couldn't use `contains('create')` to select the button.
 
 Logging in through a POST request DOES NOT grab the token from the user object. This functionality has been added.
+
+## Exercise 5.20
+Test was relatively straightforward. Used the newBlog command to create a new blog.

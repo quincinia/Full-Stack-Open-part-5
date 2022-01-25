@@ -40,7 +40,7 @@ describe('Blog app', function () {
             cy.login({ username: 'quincinia', password: 'secret' })
         })
 
-        it.only('A blog can be created', function () {
+        it('A blog can be created', function () {
             cy.contains('new blog').click()
             cy.get('[name="Title"]').type('Test blog')
             cy.get('[name="Author"]').type('jacob gayban')
@@ -52,6 +52,19 @@ describe('Blog app', function () {
 
             // Confirm the blog appears in the list
             cy.contains('Test blog jacob gayban')
+        })
+
+        // Exercise 5.20
+        it.only('A blog can be liked', function () {
+            cy.newBlog({
+                title: 'Test blog',
+                author: 'jacob gayban',
+                url: 'http://localhost/bloglist'
+            })
+
+            cy.contains('show').click()
+            cy.contains('like').click()
+            cy.contains('likes 1')
         })
     })
 })
