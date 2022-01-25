@@ -82,6 +82,61 @@ describe('Blog app', function () {
             cy.contains('remove').click()
             cy.contains('Test blog').should('not.exist')
         })
+
+        // Exercise 5.22
+        describe('And several posts exist', function () {
+            beforeEach(function () {
+                cy.newBlog({
+                    title: 'first blog',
+                    author: 'jacob gayban',
+                    url: 'http://localhost/bloglist',
+                    likes: 0
+                })
+                cy.newBlog({
+                    title: 'second blog',
+                    author: 'jacob gayban',
+                    url: 'http://localhost/bloglist',
+                    likes: 2
+                })
+                cy.newBlog({
+                    title: 'third blog',
+                    author: 'jacob gayban',
+                    url: 'http://localhost/bloglist',
+                    likes: 1
+                })
+            })
+
+            it.only('Blogs are ordered by likes', function () {
+                // The second blog has the most likes, so it should be first one in the list, and thus the first one selected by .contains()
+                cy.contains('blog ').contains('second')
+
+                // At the beginning, the order of likes should go: 2, 1, 0
+                cy.get('.blog').then((blogs) => {
+                    blogs.map((index, elem) => {
+                        cy.wrap(elem).contains(`likes ${2-index}`)
+                    })
+                })
+
+                // Like the third blog a couple times to push it to the top
+                cy.contains('third').as('thirdBlog')
+                cy.get('@thirdBlog').contains('show').click()
+                cy.wait(100)
+                cy.get('@thirdBlog').contains('like').click()
+                cy.wait(100)
+                cy.get('@thirdBlog').contains('like').click()
+                cy.wait(200)
+
+                // Confirm the new order
+                cy.get('.blog').then((blogs) => {
+                    blogs.map((index, elem) => {
+                        if (index !== 2)
+                            cy.wrap(elem).contains(`likes ${3-index}`)
+                        else
+                            cy.wrap(elem).contains('likes 0')
+                    })
+                })
+            })
+        })
     })
 
     // Exercise 5.21
@@ -106,7 +161,7 @@ describe('Blog app', function () {
             cy.login({ username: 'quintwinia', password: 'secret' })
         })
 
-        it.only('Cannot delete another user\'s blog', function () {
+        it('Cannot delete another user\'s blog', function () {
             cy.contains('show').click()
             cy.contains('remove').should('not.exist')
         })

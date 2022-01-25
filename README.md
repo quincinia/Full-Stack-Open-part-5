@@ -70,7 +70,10 @@ Forgot that there were two elements with the word 'create' in them, so I couldn'
 Logging in through a POST request DOES NOT grab the token from the user object. This functionality has been added.
 
 ## Exercise 5.20
-Test was relatively straightforward. Used the newBlog command to create a new blog.
+Test was relatively straightforward. Used the `newBlog` command to create a new blog.
 
 ## Exercise 5.21
 Confirmed users cannot delete others' blog posts. Straightforward tests.
+
+## Exercise 5.22
+Had to update the `newBlog` command to take likes as a parameter. Not sure if my test is correct, but it works and makes sense.
