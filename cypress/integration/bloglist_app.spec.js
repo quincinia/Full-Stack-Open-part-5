@@ -48,14 +48,17 @@ describe('Blog app', function () {
             cy.get('button[type="submit"]').click()
 
             // Confirm the success message
-            cy.get('.success').should('contain', 'a new blog Test blog by jacob gayban added')
+            cy.get('.success').should(
+                'contain',
+                'a new blog Test blog by jacob gayban added'
+            )
 
             // Confirm the blog appears in the list
             cy.contains('Test blog jacob gayban')
         })
 
         // Exercise 5.20
-        it.only('A blog can be liked', function () {
+        it('A blog can be liked', function () {
             cy.newBlog({
                 title: 'Test blog',
                 author: 'jacob gayban',
@@ -65,6 +68,47 @@ describe('Blog app', function () {
             cy.contains('show').click()
             cy.contains('like').click()
             cy.contains('likes 1')
+        })
+
+        // Exercise 5.21
+        it('Users can delete blog', function () {
+            cy.newBlog({
+                title: 'Test blog',
+                author: 'jacob gayban',
+                url: 'http://localhost/bloglist'
+            })
+
+            cy.contains('show').click()
+            cy.contains('remove').click()
+            cy.contains('Test blog').should('not.exist')
+        })
+    })
+
+    // Exercise 5.21
+    describe('Second user\'s perspective', function () {
+        beforeEach(function () {
+            // Login as first user and create a new blog
+            cy.login({ username: 'quincinia', password: 'secret' })
+            cy.newBlog({
+                title: 'Test blog',
+                author: 'jacob gayban',
+                url: 'http://localhost/bloglist'
+            })
+
+            // Create and log in as second user
+            const user = {
+                username: 'quintwinia',
+                name: 'jacob gayban?',
+                password: 'secret'
+            }
+            cy.request('POST', 'http://localhost:3003/api/users', user)
+            cy.visit('http://localhost:3000')
+            cy.login({ username: 'quintwinia', password: 'secret' })
+        })
+
+        it.only('Cannot delete another user\'s blog', function () {
+            cy.contains('show').click()
+            cy.contains('remove').should('not.exist')
         })
     })
 })
